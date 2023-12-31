@@ -1,10 +1,11 @@
 import React from 'react'
+import './Pokemon.css'
 
-function Pokemon({name,image}) {
+function Pokemon({ name, image }) {
   return (
-    <div>
-    <div>{name}</div>
-    <div><img src={image}/></div>
+    <div className='pokemon'>
+      <div className='pokemon-name-container'>{name}</div>
+      <div className='pokemon-img-container'><img src={image} /></div>
     </div>
   )
 }

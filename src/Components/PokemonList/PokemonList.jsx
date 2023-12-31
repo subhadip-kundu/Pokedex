@@ -3,6 +3,7 @@ import axios from 'axios';
 import './PokemonList.css';
 import Pokemon from '../Pokemon/Pokemon';
 
+
 // Functional component to display a list of Pokemon
 const PokemonList = () => {
     // State to store the list of Pokemon and loading status
@@ -52,12 +53,18 @@ const PokemonList = () => {
     return (
         <div className='pokemon-list-wrapper'>
             <h1>List of Pokemon</h1>
-            {/* Display loading message if data is still loading, else render Pokemon components */}
-            {isLoading ? 'Loading.....' : (
-                pokemonList.map(pokemon => (
-                    <Pokemon key={pokemon.id} name={pokemon.name} image={pokemon.image} />
-                ))
-            )}
+            <div className="pokimon-wrapper">
+                {/* Display loading message if data is still loading, else render Pokemon components */}
+                {isLoading ? 'Loading.....' : (
+                    pokemonList.map(pokemon => (
+                        <Pokemon key={pokemon.id} name={pokemon.name} image={pokemon.image} />
+                    ))
+                )}
+            </div>
+            <div className="controls-btn">
+                <button>Prev</button>
+                <button>Next</button>
+            </div>
         </div>
     );
 };

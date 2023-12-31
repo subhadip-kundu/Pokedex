@@ -1,0 +1,44 @@
+.pokemon {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-basis: 16.5%;
+    flex-direction: column-reverse;
+    text-align: center;
+    /* margin: 2rem; */
+    padding: 3rem;
+    transition: box-shadow 0.3s;
+}
+
+.pokemon:nth-child(odd) {
+    border-radius: 6% 0%;
+}
+
+.pokemon:nth-child(even) {
+    border-radius: 0% 6%;
+}
+
+.pokemon-img-container img {
+    height: 150px;
+    width: 150px;
+}
+
+.pokemon-name-container {
+    text-transform: capitalize;
+    color: #22053d;
+    font-family: cursive;
+    cursor: pointer;
+}
+
+.pokemon-name-container::first-letter {
+    color: red;
+    font-size: larger;
+}
+
+.pokemon:hover {
+    box-shadow: #9797f1 1px 3px 3px, #ec8787 1px 3px 3px;
+}
+
+.pokemon-name-container:hover {
+    scale: 1.05;
+}
