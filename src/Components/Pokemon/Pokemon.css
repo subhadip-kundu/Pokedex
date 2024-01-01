@@ -42,3 +42,7 @@
 .pokemon-name-container:hover {
     scale: 1.05;
 }
+
+.link-wrapper{
+    text-decoration: none;
+}

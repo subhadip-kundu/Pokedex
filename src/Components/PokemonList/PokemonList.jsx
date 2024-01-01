@@ -45,7 +45,6 @@ const PokemonList = () => {
                 types: pokeData.data.types,
             }));
 
-            console.log(formattedPokemonData);
 
             // Setting the state with the structured Pokemon data
             setPokemonList(formattedPokemonData);
@@ -70,7 +69,7 @@ const PokemonList = () => {
                 {/* Display loading message if data is still loading, else render Pokemon components */}
                 {isLoading ? 'Loading.....' : (
                     pokemonList.map(pokemon => (
-                        <Pokemon key={pokemon.id} name={pokemon.name} image={pokemon.image} />
+                        <Pokemon key={pokemon.id} name={pokemon.name} image={pokemon.image} id={pokemon.id} />
                     ))
                 )}
             </div>
