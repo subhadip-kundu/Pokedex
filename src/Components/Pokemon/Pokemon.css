@@ -10,12 +10,12 @@
     transition: box-shadow 0.3s;
 }
 
-.pokemon:nth-child(odd) {
+/* .pokemon:nth-child(odd) {
     border-radius: 6% 0%;
-}
+} */
 
-.pokemon:nth-child(even) {
-    border-radius: 0% 6%;
+.pokemon {
+    border-radius: 5px;
 }
 
 .pokemon-img-container img {
