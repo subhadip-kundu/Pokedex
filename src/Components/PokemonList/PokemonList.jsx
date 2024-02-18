@@ -6,6 +6,9 @@ import LoadingSpinner from "../LoadingSpinner";
 
 // Functional component to display a list of Pokemon
 const PokemonList = () => {
+  /*
+  ** WE CAN USE AN OBJECT INSTEAD OF MANY STATE **
+
   // State to store the list of Pokemon and loading status
   const [pokemonList, setPokemonList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,19 +22,41 @@ const PokemonList = () => {
   const [nextUrl, setNextUrl] = useState("");
   const [prevUrl, setPrevUrl] = useState("");
 
+*/
+
+  //  ** OBJECT IMPLEMENTATION HERE  **
+
+  const [pokemonListState, setPokemonListState] = useState({
+    pokemonList: [],
+    isLoading: true,
+    pokedexUrl: "https://pokeapi.co/api/v2/pokemon",
+    nextUrl: "",
+    prevUrl: "",
+  });
+
   // Function to fetch Pokemon data from the API
   const fetchPokemonData = async () => {
     try {
       // Get the loading page
-      setIsLoading(true);
+      // setIsLoading(true); --> the same implementation below
+      setPokemonListState((tempState)=>({ ...tempState, isLoading: true }));
 
       // Fetching the list of Pokemon from the API
-      const response = await axios.get(pokedexUrl); // It download list of 20 pokemons
+      const response = await axios.get(pokemonListState.pokedexUrl); // It download list of 20 pokemons
       const pokemonResults = response.data.results; // We get the array of pokemons from result
 
       // Access next and previous data
+      /*
       setNextUrl(response.data.next);
       setPrevUrl(response.data.previous);
+      THE SAME IMPLEMENTATION BELOW
+      */
+
+      setPokemonListState((tempState) => ({
+        ...tempState,
+        nextUrl: response.data.next,
+        prevUrl: response.data.previous,
+      }));
 
       // Fetching details for each Pokemon in parallel
       const pokemonResultPromises = pokemonResults.map((pokemon) =>
@@ -50,11 +75,15 @@ const PokemonList = () => {
       }));
 
       // Setting the state with the structured Pokemon data
-      setPokemonList(formattedPokemonData);
-      setIsLoading(false);
+      setPokemonListState((tempState) => ({
+        ...tempState,
+        pokemonList: formattedPokemonData,
+        isLoading: false,
+      }));
+
     } catch (error) {
       console.error("Error fetching Pokemon data:", error);
-      setIsLoading(false);
+      setPokemonListState({ ...pokemonListState, isLoading: false });
       // Handle the error, e.g., display an error message to the user.
     }
   };
@@ -62,18 +91,17 @@ const PokemonList = () => {
   // useEffect hook to trigger the fetchPokemonData function when the component mounts
   useEffect(() => {
     fetchPokemonData();
-  }, [pokedexUrl]);
+  }, [pokemonListState.pokedexUrl]);
 
   // Render the component
   return (
     <div className="pokemon-list-wrapper">
       <h1>List of Pokemon</h1>
       <div className="pokimon-wrapper">
-        {/* Display loading message if data is still loading, else render Pokemon components */}
-        {isLoading ? (
+        {pokemonListState.isLoading ? (
           <LoadingSpinner />
         ) : (
-          pokemonList.map((pokemon) => (
+          pokemonListState.pokemonList.map((pokemon) => (
             <Pokemon
               key={pokemon.id}
               name={pokemon.name}
@@ -85,17 +113,23 @@ const PokemonList = () => {
       </div>
       <div className="controls-btn">
         <button
-          disabled={prevUrl == null}
+          disabled={pokemonListState.prevUrl == null}
           onClick={() => {
-            setPokedexUrl(prevUrl);
+            setPokemonListState({
+              ...pokemonListState,
+              pokedexUrl: pokemonListState.prevUrl,
+            });
           }}
         >
           Prev
         </button>
         <button
-          disabled={nextUrl == null}
+          disabled={pokemonListState.nextUrl == null}
           onClick={() => {
-            setPokedexUrl(nextUrl);
+            setPokemonListState({
+              ...pokemonListState,
+              pokedexUrl: pokemonListState.nextUrl,
+            });
           }}
         >
           Next

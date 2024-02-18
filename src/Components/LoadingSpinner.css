@@ -11,6 +11,7 @@
   height: 36px;
   opacity: 0;
   font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   animation: move 2s linear infinite;
 }
 
