@@ -1,15 +1,22 @@
-import React from 'react'
-import Search from '../Search/Search';
-import './Pokedex.css'
-import PokemonList from '../PokemonList/PokemonList';
+import React, { useState } from "react";
+import Search from "../Search/Search";
+import "./Pokedex.css";
+import PokemonList from "../PokemonList/PokemonList";
+import PokemonDetails from "../PokemonDetails/PokemonDetails";
 
 function Pokedex() {
-    return (
-        <div className='pokedex-wrapper'>
-            <Search />
-            <PokemonList/>
-        </div>
-    )
+  const [searchTerm, setsearchTerm] = useState("");
+
+  return (
+    <div className="pokedex-wrapper">
+      <Search updateSearchTerm={setsearchTerm} />
+      {searchTerm.length == 0 ? (
+        <PokemonList />
+      ) : (
+        <PokemonDetails key={searchTerm} pokemonName={searchTerm} />
+      )}
+    </div>
+  );
 }
 
 export default Pokedex;

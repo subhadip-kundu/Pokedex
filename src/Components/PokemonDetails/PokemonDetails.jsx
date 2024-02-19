@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "./PokemonDetails.css";
 import LoadingSpinner from "../LoadingSpinner";
 
-function PokemonDetails() {
+function PokemonDetails({ pokemonName }) {
   const id = useParams().id;
 
   const [pokemon, setPokemon] = useState({});
@@ -14,9 +14,16 @@ function PokemonDetails() {
     try {
       setIsLoading(true);
 
-      const response = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${id}`
-      );
+      let response;
+
+      if (pokemonName) {
+        response = await axios.get(
+          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+        );
+      } else {
+        response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      }
+
       setPokemon({
         name: response.data.name,
         image: response.data.sprites.other.dream_world.front_default,
@@ -28,7 +35,7 @@ function PokemonDetails() {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      throw error;
+      console.log(`No pokemon found called → ${pokemonName}`);
     }
   }
 

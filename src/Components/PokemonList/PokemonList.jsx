@@ -8,7 +8,7 @@ const PokemonList = () => {
 
   return (
     <div className="pokemon-list-wrapper">
-      <h1>List of Pokemon</h1>
+      {/* <h1>List of Pokemon</h1> */}
       <div className="pokimon-wrapper">
         {pokemonListState.isLoading ? (
           <LoadingSpinner />
