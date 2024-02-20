@@ -1,7 +1,7 @@
 // USE THIS FOR SENDING NETWORK REQUEST FOR SEARCH (MAKE SOME DELAY FOR THE LIMITED TIMES REQUEST TO THE NETWORK)
 
 // Define a higher-order function named useDebounce
-function useDebounce(cb, delay = 2000) {
+function useDebounce(cb, delay = 500) {
   let timerId; // Variable to hold the ID of the setTimeout timer
 
   // Return an anonymous function that will be used as the debounced function
