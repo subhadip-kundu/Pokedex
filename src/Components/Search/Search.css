@@ -1,14 +1,28 @@
 .search-wrapper {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 #pokemon-name-search {
-    width: 500px;
-    margin: 1rem;
-    padding: 1rem;
-    font-size: 1.3rem;
-    outline: 2px solid #4d0264;
-    border: none;
-    border-radius: 3px;
-    text-transform: capitalize;
+  width: 500px;
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 1.3rem;
+  outline: 2px solid #4d0264;
+  border: none;
+  border-radius: 3px;
+  text-transform: capitalize;
+}
+
+@media (max-width: 480px) {
+  #pokemon-name-search {
+    width: 85%;
+    padding: 0.75rem;
+  }
+  .search-wrapper {
+    width: 100%;
+    margin: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
