@@ -63,6 +63,8 @@ npm run dev
 
 5. Open your browser and navigate to `http://localhost:5173` to view the Pokédex.
 
+6. Live on `https://pokedex-by-subh.netlify.app/`
+
 ## Usage
 
 The Pokédex allows trainers to embark on an exciting journey of exploration and discovery:
