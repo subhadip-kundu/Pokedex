@@ -28,7 +28,8 @@ The Pokédex project leverages modern web technologies to deliver a dynamic and 
 
 ## Screenshots
 
-![image](https://github.com/subhadip-kundu/Pokedex/assets/124190254/814d1f29-8151-4d3f-9492-9dea41e41d5e)
+![image](https://github.com/subhadip-kundu/Pokedex/assets/124190254/8120ad48-c766-4de8-b58b-c446a3e78aad)
+
 ![image](https://github.com/subhadip-kundu/Pokedex/assets/124190254/d1516c9d-a001-4b03-a038-654b73ed5e44)
 
 
